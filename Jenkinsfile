@@ -39,7 +39,7 @@ node('devserver') {
     echo 'Artifacts copied'
 
     echo 'Copy'
-    sh "yes |  cp -R bundlemort.tar.gz /var/www/html && cd /var/www/html &&  tar -xvf bundlemort.tar.gz && rm -rf reactmile/* && cp -r build/*  /var/www/html/mortgagereact/ && rm -rf /var/www/html/build"
+    sh "yes |  cp -R bundlemort.tar.gz /var/www/html && cd /var/www/html &&  tar -xvf bundlemort.tar.gz && rm -rf insurancereact/* && cp -r build/*  /var/www/html/insurancereact/ && rm -rf /var/www/html/build"
     echo 'Copy completed'
 }
 
