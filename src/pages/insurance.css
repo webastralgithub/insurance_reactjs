@@ -1,0 +1,64 @@
+.container{
+    padding: 0 20px;
+}
+/* navbar styling */
+.navbar{
+    background: #262629;
+    padding: 0px 16px
+}
+
+/* hero section styling */
+.caption{
+    color: #c59a4a;
+    text-shadow: 0 2px #000000;
+    top: 30%;
+    right: 10%;
+}
+/* about section styling */
+ .about-content h4{
+    color: #c59a4a;
+
+ }
+ /* services styling */
+ .service-card{
+    height: 210px;
+    padding: 30px 20px 20px 20px ;
+  }
+  .service-card:hover{
+    background:#f2f2f2;
+  }
+  /* form-styling */
+  .form-head {
+    background: #262629;
+    padding: 40px!important;
+    border-radius: 10px;
+   }
+   .form-head h2{
+    color: #c59a4a;
+    font-weight: 500;
+    text-transform: uppercase;
+    font-size: 25px;
+   }
+   .form-head form button{
+    background: #c59a4a;
+    color: white;
+    border-radius: 0;
+    border: 1px solid #c59a4a;
+    padding: 13px 25px;
+    text-transform: uppercase;
+   }
+   .form-head form button:hover{
+    background: transparent;
+    color: #c59a4a;
+    transition-duration: 1s;
+   }
+.footer{
+    background: #1e1a13;
+    color: #999999;
+}
+/* rwsponsive */
+@media(max-width:768px){
+  .service-card{
+  padding: 15px 15px 15px 15px;
+  }
+}
