@@ -6,6 +6,7 @@ import Swal from 'sweetalert2'
 const QuoteForm=()=>{
   const [form , setForm]= useState({
     name: "",
+    last_name:"",
     age:"",
     email: "",
     phone: "",
@@ -31,7 +32,7 @@ const QuoteForm=()=>{
 
   const handleSubmit=async(e)=>{
     e.preventDefault()
-    if (form.name == "" || form.phone == "" ||form.email == "" ||form.message == ""||form.age=="" ||form.quote=="") {
+    if (form.name == "" ||form.last_name == "" || form.phone == "" ||form.email == "" ||form.message == ""||form.age=="" ||form.quote=="") {
       setallFieldErr("Please enter all feilds.")
       } else if (!regExp.test(form.email)) {
         setallFieldErr("Invalid email address." )
@@ -61,6 +62,7 @@ const QuoteForm=()=>{
     // console.log("resp", err)
     setForm({
         name: "",
+        last_name:"",
         email: "",
         age:"",
         quote:"",
@@ -71,11 +73,19 @@ const QuoteForm=()=>{
     }
   };
     return(
- <div>
+ <div id='form' className='scroll-break'>
     <section className='py-12'>
-        <div className='container m-auto'>
+        <div className='container px-5 m-auto'>
             <div className='sm:w-10/12 w-full m-auto form-head'>
+              <div className='grid grid-cols-8 gap-5'>
+                <div className='lg:col-span-4 col-span-8 bg-white lg:pb-8 pb-0 pt-8 px-8'>
                 <h2 className='mb-2'>GET A QUOTE</h2>
+                  <div>
+                    <img className='hidden lg:block' src="../images/7544.jpg" alt="" />
+                  </div>
+                </div>
+                <div className='lg:col-span-4 col-span-8  py-8 px-8 bg-[#262629]'>
+               
                 <form>
                 <p className='mb-3 text-xl' style={{color:"red"}}>{allFieldErr}</p>
             <div className='grid grid-cols-8 gap-5 items-center mb-5'>
@@ -94,11 +104,10 @@ const QuoteForm=()=>{
         text-gray-700
         bg-white bg-clip-padding
         border border-solid border-gray-300
-        rounded
         transition
         ease-in-out
         m-0
-        focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none
+        focus:text-gray-700 focus:bg-white focus:border-[#c59a4a] focus:outline-none
       "
       id="name"
       name="name"
@@ -123,21 +132,20 @@ const QuoteForm=()=>{
         text-gray-700
         bg-white bg-clip-padding
         border border-solid border-gray-300
-        rounded
         transition
         ease-in-out
         m-0
-        focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none
+        focus:text-gray-700 focus:bg-white focus:border-[#c59a4a] focus:outline-none
       "
-      id="age"
-      name="age"
-      value={form.age}
+      id="last_name"
+      name="last_name"
+      value={form.last_name}
       onChange={handleInput}
-      placeholder="Age"
+      placeholder="Last Name"
     />
                 </div>
             </div>
-            <div className='col-span-8 sm:col-span-4'>
+            <div className='col-span-8 sm:col-span-8'>
                 <div className=' text-center'>
                 <input
       type="email"
@@ -152,11 +160,10 @@ const QuoteForm=()=>{
         text-gray-700
         bg-white bg-clip-padding
         border border-solid border-gray-300
-        rounded
         transition
         ease-in-out
         m-0
-        focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none
+        focus:text-gray-700 focus:bg-white focus:border-[#c59a4a] focus:outline-none
       "
       id="email"
       name="email"
@@ -166,6 +173,35 @@ const QuoteForm=()=>{
     />
                 </div>
             </div>
+            <div className='col-span-8 sm:col-span-4'>
+                <div className=' text-center'>
+                <input
+      type="text"
+      class="
+        form-control
+        block
+        w-full
+        px-3
+        py-1.5
+        text-base
+        font-normal
+        text-gray-700
+        bg-white bg-clip-padding
+        border border-solid border-gray-300
+        transition
+        ease-in-out
+        m-0
+        focus:text-gray-700 focus:bg-white focus:border-[#c59a4a] focus:outline-none
+      "
+      id="age"
+      name="age"
+      value={form.age}
+      onChange={handleInput}
+      placeholder="Age"
+    />
+                </div>
+            </div>
+           
             <div className='col-span-8 sm:col-span-4'>
                 <div className=' text-center'>
                 <input
@@ -181,11 +217,10 @@ const QuoteForm=()=>{
         text-gray-700
         bg-white bg-clip-padding
         border border-solid border-gray-300
-        rounded
         transition
         ease-in-out
         m-0
-        focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none
+        focus:text-gray-700 focus:bg-white focus:border-[#c59a4a] focus:outline-none
       "
       id="phone"
       name="phone"
@@ -196,7 +231,7 @@ const QuoteForm=()=>{
                 </div>
             </div>
 
-            <div className='col-span-8 sm:col-span-4'>
+            <div className='col-span-8 sm:col-span-8'>
                 <div className=' text-center'>
                 <select class="form-select appearance-none
       block
@@ -208,16 +243,15 @@ const QuoteForm=()=>{
       text-gray-700
       bg-white bg-clip-padding bg-no-repeat
       border border-solid border-gray-300
-      rounded
       transition
       ease-in-out
       m-0
-      focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+      focus:text-gray-700 focus:bg-white focus:border-[#c59a4a] focus:outline-none"
       name="quote"
       onChange={handleInput}
       aria-label="Default select example">
         <option value="---- Quote for? ----">---- Quote for? ----</option>
-            												<option value="Life Insurance">Life Insurance</option>
+            												<option  value="Life Insurance">Life Insurance</option>
             												<option value="Term Life Insurance">Term Life Insurance</option>
             												<option value="Whole Life Insurance">Whole Life Insurance</option>
             												<option value="Universal Life Insurance">Universal Life Insurance</option>
@@ -249,10 +283,10 @@ const QuoteForm=()=>{
                 </div>
             </div>
 
-            <div className='col-span-8 sm:col-span-4'>
+            <div className='col-span-8 sm:col-span-8'>
                 <div className=' text-center'>
-                <input
-      type="tel"
+                <textarea
+      rows="4" cols="50"
       class="
         form-control
         block
@@ -264,18 +298,17 @@ const QuoteForm=()=>{
         text-gray-700
         bg-white bg-clip-padding
         border border-solid border-gray-300
-        rounded
         transition
         ease-in-out
         m-0
-        focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none
+        focus:text-gray-700 focus:bg-white focus:border-[#c59a4a] focus:outline-none
       "
       id="message"
       name="message"
       value={form.message}
       onChange={handleInput}
       placeholder="Message"
-    />
+    ></textarea>
                 </div>
             </div>
          
@@ -289,7 +322,6 @@ const QuoteForm=()=>{
       text-xs
       leading-tight
       uppercase
-      rounded
       shadow-md
       hover:bg-blue-700 hover:shadow-lg
       active:bg-blue-800 active:shadow-lg
@@ -298,6 +330,9 @@ const QuoteForm=()=>{
       ease-in-out"
       onClick  ={handleSubmit} >Submit</button>
             </form>
+                  </div>
+              </div>
+                
             </div>
         </div>
     </section>
