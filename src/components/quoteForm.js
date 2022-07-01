@@ -5,7 +5,7 @@ import Swal from 'sweetalert2'
 
 const QuoteForm=()=>{
   const [form , setForm]= useState({
-    name: "",
+    first_name: "",
     last_name:"",
     age:"",
     email: "",
@@ -32,7 +32,7 @@ const QuoteForm=()=>{
 
   const handleSubmit=async(e)=>{
     e.preventDefault()
-    if (form.name == "" ||form.last_name == "" || form.phone == "" ||form.email == "" ||form.message == ""||form.age=="" ||form.quote=="") {
+    if (form.first_name == "" ||form.last_name == "" || form.phone == "" ||form.email == "" ||form.message == ""||form.age=="" ||form.quote=="") {
       setallFieldErr("Please enter all feilds.")
       } else if (!regExp.test(form.email)) {
         setallFieldErr("Invalid email address." )
@@ -61,7 +61,7 @@ const QuoteForm=()=>{
     }
     // console.log("resp", err)
     setForm({
-        name: "",
+        first_name: "",
         last_name:"",
         email: "",
         age:"",
@@ -109,11 +109,11 @@ const QuoteForm=()=>{
         m-0
         focus:text-gray-700 focus:bg-white focus:border-[#c59a4a] focus:outline-none
       "
-      id="name"
-      name="name"
-      value={form.name}
+      id="first_name"
+      name="first_name"
+      value={form.first_name}
       onChange={handleInput}
-      placeholder="Name"
+      placeholder="First Name"
     />
                 </div>
             </div>
