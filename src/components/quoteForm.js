@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { Sitesetting } from './Sitesetting';
 import axios from 'axios';
 import Swal from 'sweetalert2'
+import { Circles } from  'react-loader-spinner'
 
 const QuoteForm=()=>{
   const [form , setForm]= useState({
@@ -10,9 +11,12 @@ const QuoteForm=()=>{
     age:"",
     email: "",
     phone: "",
-    message: "",
+    comments: "",
     quote:""
   })
+
+  const [isloading,setisloading] = useState(false);
+
   const [allFieldErr, setallFieldErr] = useState(null);
   const regExp = RegExp(
     /^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[A-Za-z]+$/
@@ -32,23 +36,26 @@ const QuoteForm=()=>{
 
   const handleSubmit=async(e)=>{
     e.preventDefault()
-    if (form.first_name == "" ||form.last_name == "" || form.phone == "" ||form.email == "" ||form.message == ""||form.age=="" ||form.quote=="") {
+    if (form.first_name == "" ||form.last_name == "" || form.phone == "" ||form.email == "" ||form.comments == ""||form.age=="" ||form.quote=="") {
       setallFieldErr("Please enter all feilds.")
       } else if (!regExp.test(form.email)) {
         setallFieldErr("Invalid email address." )
         console.log("Invalid email address.");
-      }else if(form.message.length<=5){
+      }else if(form.comments.length<=5){
         setallFieldErr("Min. 6 letters required in message box.")
-      } else if (!form.phone.match(phoneno)) {
-        setallFieldErr("Invalid no" )
-        console.log("Invalid no.");
       }
+      //  else if (!form.phone.length<=14) {
+      //   setallFieldErr("Invalid no" )
+      //   console.log("Invalid no.");
+      // }
       else {
     const newEntry = { ...form }
     var url= `${apiurl}/api/getaquote`
+    setisloading(true);
     const result = await axios.post(url,newEntry);
     const response = await result
     if (response.data.status == true) {
+      setisloading(false);
 
       Swal.fire({
 
@@ -67,7 +74,7 @@ const QuoteForm=()=>{
         age:"",
         quote:"",
         phone: "",
-        message: ""
+        comments: ""
       })
       setallFieldErr("")
     }
@@ -303,16 +310,18 @@ const QuoteForm=()=>{
         m-0
         focus:text-gray-700 focus:bg-white focus:border-[#c59a4a] focus:outline-none
       "
-      id="message"
-      name="message"
-      value={form.message}
+      id="comments"
+      name="comments"
+      value={form.comments}
       onChange={handleInput}
-      placeholder="Message"
+      placeholder="Comments"
     ></textarea>
                 </div>
             </div>
          
             </div>
+            <div className='relative'>
+
             <button type="submit" class="
       px-6
       py-2.5
@@ -329,6 +338,16 @@ const QuoteForm=()=>{
       duration-150
       ease-in-out"
       onClick  ={handleSubmit} >Submit</button>
+       <div style={{position:"absolute",left:"100px",top:"4px"}}>
+      { isloading == true ?<Circles 
+    height="30"
+    width="30"
+    color='darkgreen'
+    ariaLabel='loading'
+    
+  />:""}
+      </div>
+      </div>
             </form>
                   </div>
               </div>
